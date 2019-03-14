@@ -373,7 +373,7 @@ void ArduinoGraphics::beginText(int x, int y, uint32_t color)
   beginText(x, y, COLOR_R(color), COLOR_G(color), COLOR_B(color));
 }
 
-void ArduinoGraphics::endText(bool scroll)
+void ArduinoGraphics::endText(int scrollDirection)
 {
   // backup the stroke color and set the color to the text color
   bool strokeOn = _stroke;
@@ -381,22 +381,45 @@ void ArduinoGraphics::endText(bool scroll)
   uint8_t strokeG = _strokeG;
   uint8_t strokeB = _strokeB;
 
-Serial.println(_textBuffer);
-Serial.println(_textX);
-Serial.println(_textY);
-Serial.println(_textR);
-Serial.println(_textG);
-Serial.println(_textB);
-
 
   stroke(_textR, _textG, _textB);
 
-  if (scroll) {
+  if (scrollDirection == SCROLL_LEFT) {
     int scrollLength = _textBuffer.length() * textFontWidth() + _textX;
 
     for (int i = 0; i < scrollLength; i++) {
       beginDraw();
       text(_textBuffer, _textX - i, _textY);
+      endDraw();
+
+      delay(_textScrollSpeed);
+    }
+  } else if (scrollDirection == SCROLL_RIGHT) {
+    int scrollLength = _textBuffer.length() * textFontWidth() + _textX;
+
+    for (int i = 0; i < scrollLength; i++) {
+      beginDraw();
+      text(_textBuffer, _textX - (scrollLength - i - 1), _textY);
+      endDraw();
+
+      delay(_textScrollSpeed);
+    }
+  } else if (scrollDirection == SCROLL_UP) {
+    int scrollLength = textFontHeight() + _textY;
+
+    for (int i = 0; i < scrollLength; i++) {
+      beginDraw();
+      text(_textBuffer, _textX, _textY - i);
+      endDraw();
+
+      delay(_textScrollSpeed);
+    }
+  } else if (scrollDirection == SCROLL_DOWN) {
+    int scrollLength = textFontHeight() + _textY;
+
+    for (int i = 0; i < scrollLength; i++) {
+      beginDraw();
+      text(_textBuffer, _textX, _textY - (scrollLength - i - 1));
       endDraw();
 
       delay(_textScrollSpeed);

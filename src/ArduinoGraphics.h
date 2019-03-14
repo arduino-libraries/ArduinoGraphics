@@ -25,6 +25,14 @@
 #include "Font.h"
 #include "Image.h"
 
+enum {
+  NO_SCROLL,
+  SCROLL_LEFT,
+  SCROLL_RIGHT,
+  SCROLL_UP,
+  SCROLL_DOWN
+};
+
 class ArduinoGraphics : public Print {
 public:
   ArduinoGraphics(int width, int height);
@@ -77,7 +85,7 @@ public:
   virtual void beginText(int x = 0, int y = 0);
   virtual void beginText(int x, int y, uint8_t r, uint8_t g, uint8_t b);
   virtual void beginText(int x, int y, uint32_t color);
-  virtual void endText(bool scroll = false);
+  virtual void endText(int scroll = NO_SCROLL);
   virtual void textScrollSpeed(unsigned long speed = 150);
 
 protected:
