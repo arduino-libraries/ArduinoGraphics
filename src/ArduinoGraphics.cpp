@@ -298,7 +298,7 @@ void ArduinoGraphics::imageRGB16(const Image& img, int x, int y, int width, int 
     for (int i = 0; i < width; i++) {
       uint16_t pixel = *data++;
 
-      set(x + i, y + j, (pixel >> 8), ((pixel >> 3) & 0xfc), (pixel << 3) & 0xf8);
+      set(x + i, y + j, ((pixel >> 8) & 0xf8), ((pixel >> 3) & 0xfc), (pixel << 3) & 0xf8);
     }
 
     data += (img.width() - width);
