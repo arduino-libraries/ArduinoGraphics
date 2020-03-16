@@ -184,6 +184,38 @@ void ArduinoGraphics::rect(int x, int y, int width, int height)
   }
 }
 
+void ArduinoGraphics::ellipse(int x, int y, int width, int height)
+{
+  if (!_stroke && !_fill) {
+    return;
+  }
+
+  int x1 = x;
+  int y1 = y;
+  int r1 = (width/2);
+  int r2 = (height/2);
+  int x2 = x1 + r1 - 1;
+
+  for(x = x1; x <= x2; x++) {
+      y2 = y1 + sqrt((1 - ((x * x)/(r1 * r1)))) * r2;
+      for(y = y1; y <= y2; y++) {
+          if ((y == y2) && _stroke) {
+            // stroke
+            set(x, y, _strokeR, _strokeG, _strokeB); // current point
+            set(x - (((x - x1) * 2)), y, _strokeR, _strokeG, _strokeB); // second reflection
+            set(x, y - (((y - y1) * 2)), _strokeR, _strokeG, _strokeB); // third reflection
+            set(x - (((x - x1) * 2)), y - (((y - y1) * 2)), _strokeR, _strokeG, _strokeB); // fourth reflection
+          } else if (_fill) {
+            // fill
+            set(x, y, _fillR, _fillG, _fillB); // current point
+            set(x - (((x - x1) * 2)), y, _fillR, _fillG, _fillB); // second reflection
+            set(x, y - (((y - y1) * 2)), _fillR, _fillG, _fillB); // third reflection
+            set(x - (((x - x1) * 2)), y - (((y - y1) * 2)), _fillR, _fillG, _fillB); // fourth reflection
+          }
+      }
+  }
+}
+
 void ArduinoGraphics::text(const char* str, int x, int y)
 {
   if (!_font || !_stroke) {
@@ -365,7 +397,7 @@ void ArduinoGraphics::beginText(int x, int y, uint8_t r, uint8_t g, uint8_t b)
 
   _textR = r;
   _textG = g;
-  _textB = b;  
+  _textB = b;
 }
 
 void ArduinoGraphics::beginText(int x, int y, uint32_t color)
@@ -482,7 +514,7 @@ void ArduinoGraphics::lineHigh(int x1, int y1, int x2, int y2)
     xi = -1;
     dx = -dx;
   }
-  
+
   int D = 2 * dx - dy;
   int x = x1;
 
