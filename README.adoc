@@ -1,6 +1,6 @@
 = ArduinoGraphics Library for Arduino =
 
-image:https://github.com/arduino-libraries/ArduinoGraphics/workflows/Compile%20Examples/badge.svg["Compile Examples Status", link="https://github.com/arduino-libraries/ArduinoGraphics/actions?workflow=Compile+Examples"] image:https://github.com/arduino-libraries/ArduinoGraphics/workflows/Spell%20Check/badge.svg["Spell Check Status", link="https://github.com/arduino-libraries/ArduinoGraphics/actions?workflow=Spell+Check"]
+image:https://github.com/arduino-libraries/ArduinoGraphics/workflows/Spell%20Check/badge.svg["Spell Check Status", link="https://github.com/arduino-libraries/ArduinoGraphics/actions?workflow=Spell+Check"]
 
 Core graphics library for Arduino. Based on the Processing API.
 
