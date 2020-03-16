@@ -34,6 +34,8 @@ point	KEYWORD2
 quad	KEYWORD2
 rect	KEYWORD2
 ellipse KEYWORD2
+circle KEYWORD2
+arc KEYWORD2
 
 text	KEYWORD2
 textFont	KEYWORD2

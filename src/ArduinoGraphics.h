@@ -22,6 +22,8 @@
 
 #include <Arduino.h>
 
+#include <math.h> // added for sqrt, cos and sin functions
+
 #include "Font.h"
 #include "Image.h"
 
@@ -57,13 +59,14 @@ public:
   void stroke(uint32_t color);
   void noStroke();
 
-  //virtual void arc(int x, int y, int width, int height, int start, int stop);
   virtual void line(int x1, int y1, int x2, int y2);
   virtual void point(int x, int y);
   //virtual void quad(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4);
   //virtual void triangle(int x1, int y1, int x2, int y2, int x3, int y3);
   virtual void rect(int x, int y, int width, int height);
   virtual void ellipse(int x, int y, int width, int height);
+  virtual void circle(int x, int y, int radius);
+  virtual void arc(int x, int y, int radiusX, int radiusY, int start, int stop);
 
   virtual void text(const char* str, int x = 0, int y = 0);
   virtual void text(const String& str, int x = 0, int y = 0) { text(str.c_str(), x, y); }
