@@ -29,11 +29,12 @@ noFill	KEYWORD2
 stroke	KEYWORD2
 noStroke	KEYWORD2
 
+ellipse	KEYWORD2
+circle	KEYWORD2
 line	KEYWORD2
 point	KEYWORD2
 quad	KEYWORD2
 rect	KEYWORD2
-ellipse	KEYWORD2
 
 text	KEYWORD2
 textFont	KEYWORD2
