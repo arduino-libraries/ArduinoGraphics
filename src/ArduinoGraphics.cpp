@@ -124,6 +124,23 @@ void ArduinoGraphics::noStroke()
   _stroke = false;
 }
 
+void ArduinoGraphics::ellipse(int x, int y, int width, int height)
+{
+  if (!_stroke) {
+    return;
+  }
+
+  float theta;
+  int r1 = width / 2;
+  int r2 = height / 2;
+  for (int angle = 0; angle < 360; angle += 1) {
+    theta = angle * 3.14 / 180;
+    int xi = r1 * cos(theta);
+    int yi = r2 * sin(theta);
+    set(x + xi, y - yi, _strokeR, _strokeG, _strokeB);
+  }
+}
+
 void ArduinoGraphics::line(int x1, int y1, int x2, int y2)
 {
   if (!_stroke) {

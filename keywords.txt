@@ -33,6 +33,7 @@ line	KEYWORD2
 point	KEYWORD2
 quad	KEYWORD2
 rect	KEYWORD2
+ellipse	KEYWORD2
 
 text	KEYWORD2
 textFont	KEYWORD2
