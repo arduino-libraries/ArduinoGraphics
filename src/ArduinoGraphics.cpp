@@ -236,7 +236,7 @@ void ArduinoGraphics::bitmap(const uint8_t* data, int x, int y, int width, int h
     return;
   }
 
-  if ((data == NULL) || ((x + width) < 0) || ((y + height) < 0) || (x > _width) || (y > height)) {
+  if ((data == NULL) || ((x + width) < 0) || ((y + height) < 0) || (x > _width) || (y > _height)) {
     // offscreen
     return;
   }
