@@ -138,12 +138,13 @@ void ArduinoGraphics::ellipse(int x, int y, int width, int height)
     int xi = r1 * cos(theta);
     int yi = r2 * sin(theta);
     if (_stroke) {
-        // stroke
-        set(x + xi, y - yi, _strokeR, _strokeG, _strokeB);
-      } else if (_fill) {
-        // fill
-        set(x + xi, y - yi, _fillR, _fillG, _fillB);
-      }
+      // stroke
+      set(x + xi, y - yi, _strokeR, _strokeG, _strokeB);
+    } 
+    if (_fill) {
+      // fill
+      set(x + xi, y - yi, _fillR, _fillG, _fillB);
+    }
   }
 }
 
@@ -160,12 +161,13 @@ void ArduinoGraphics::circle(int x, int y, int radius)
     int xi = radius * cos(theta);
     int yi = radius * sin(theta);
     if (_stroke) {
-        // stroke
-        set(x + xi, y - yi, _strokeR, _strokeG, _strokeB);
-      } else if (_fill) {
-        // fill
-        set(x + xi, y - yi, _fillR, _fillG, _fillB);
-      }
+      // stroke
+      set(x + xi, y - yi, _strokeR, _strokeG, _strokeB);
+    }
+    if (_fill) {
+      // fill
+      set(x + xi, y - yi, _fillR, _fillG, _fillB);
+    }
   }
 }
 
