@@ -66,7 +66,7 @@ public:
   virtual void rect(int x, int y, int width, int height);
   virtual void ellipse(int x, int y, int width, int height);
   virtual void circle(int x, int y, int radius);
-  virtual void arc(int x, int y, int radiusX, int radiusY, int start, int stop);
+  // virtual void arc(int x, int y, int radiusX, int radiusY, int start, int stop);
 
   virtual void text(const char* str, int x = 0, int y = 0);
   virtual void text(const String& str, int x = 0, int y = 0) { text(str.c_str(), x, y); }

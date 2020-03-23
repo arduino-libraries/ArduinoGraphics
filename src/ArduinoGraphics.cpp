@@ -186,91 +186,102 @@ void ArduinoGraphics::rect(int x, int y, int width, int height)
 
 void ArduinoGraphics::ellipse(int x, int y, int width, int height)
 {
-  if (!_stroke && !_fill) {
-    return;
-  }
+    if (!_stroke && !_fill) {
+      return;
+    }
 
-  int x1 = x;
-  int y1 = y;
-  int r1 = (int)(width/2);
-  int r2 = (int)(height/2);
-  int x2 = x1 + r1 - 1;
+    int r1 = (int)(width/2);
+    int r2 = (int)(height/2);
 
-  for (x = x1; x <= x2; x++) {
-      y2 = (int) (y1 + sqrt((1 - ((x * x)/(r1 * r1)))) * r2);
-      for (y = y1; y <= y2; y++) {
-          if ((y == y2) && _stroke) {
-            // stroke
-            set(x, y, _strokeR, _strokeG, _strokeB); // current point
-            set(x - (((x - x1) * 2)), y, _strokeR, _strokeG, _strokeB); // second reflection
-            set(x, y - (((y - y1) * 2)), _strokeR, _strokeG, _strokeB); // third reflection
-            set(x - (((x - x1) * 2)), y - (((y - y1) * 2)), _strokeR, _strokeG, _strokeB); // fourth reflection
-          } else if (_fill) {
-            // fill
-            set(x, y, _fillR, _fillG, _fillB); // current point
-            set(x - (((x - x1) * 2)), y, _fillR, _fillG, _fillB); // second reflection
-            set(x, y - (((y - y1) * 2)), _fillR, _fillG, _fillB); // third reflection
-            set(x - (((x - x1) * 2)), y - (((y - y1) * 2)), _fillR, _fillG, _fillB); // fourth reflection
-          }
-      }
-  }
+    x--;
+    y--;
+
+    for(int i = 0; i < r1; i++)
+    {
+        int j = ceil(sqrt(1 - ((float)(i*i)/(r1*r1))) * r2);
+
+        int x1 = x-i;
+        int x2 = x+i;
+        int y1 = y-j;
+        int y2 = y+j;
+
+        if(width%2 == 0)
+        {
+            x2--;
+        }
+
+        if(height%2 == 0)
+        {
+            y2--;
+        }
+
+        if(_stroke)
+        {
+            set(x1, y1, _strokeR, _strokeG, _strokeB);
+            set(x1, y2, _strokeR, _strokeG, _strokeB);
+            set(x2, y1, _strokeR, _strokeG, _strokeB);
+            set(x2, y2, _strokeR, _strokeG, _strokeB);
+        }
+
+        if(_fill)
+        {
+            for(int a = 0; a < j; a++)
+            {
+                int x1 = x-i;
+                int x2 = x+i;
+                int y1 = y-a;
+                int y2 = y+a;
+
+                if(width%2 == 0)
+                {
+                    x2--;
+                }
+
+                if(height%2 == 0)
+                {
+                    y2--;
+                }
+
+                set(x1, y1, _fillR, _fillG, _fillB);
+                set(x1, y2, _fillR, _fillG, _fillB);
+                set(x2, y1, _fillR, _fillG, _fillB);
+                set(x2, y2, _fillR, _fillG, _fillB);
+            }
+        }
+    }
+
+    if(_stroke)
+    {
+        for(int j = 0; j < r2; j++)
+        {
+            int i = ceil(sqrt(1 - ((float)(j*j)/(r2*r2))) * r1);
+
+            int x1 = x-i;
+            int x2 = x+i;
+            int y1 = y-j;
+            int y2 = y+j;
+
+            if(width%2 == 0)
+            {
+                x2--;
+            }
+
+            if(height%2 == 0)
+            {
+                y2--;
+            }
+
+            set(x1, y1, _strokeR, _strokeG, _strokeB);
+            set(x1, y2, _strokeR, _strokeG, _strokeB);
+            set(x2, y1, _strokeR, _strokeG, _strokeB);
+            set(x2, y2, _strokeR, _strokeG, _strokeB);
+        }
+    }
 }
 
 void ArduinoGraphics::circle(int x, int y, int radius)
 {
-  if (!_stroke && !_fill) {
-    return;
-  }
-
-  int x1 = x;
-  int y1 = y;
-  int x2 = x1 + radius;
-
-  for (x = x1; x <= x2; x++) {
-      y2 = (int) y1 + sqrt((radius*radius)-(x*x)) ;
-      for (y = y1; y <= y2; y++) {
-          if ((y == y2) && _stroke) {
-            // stroke
-            set(x, y, _strokeR, _strokeG, _strokeB); // current point
-            set(x - (((x - x1) * 2)), y, _strokeR, _strokeG, _strokeB); // second reflection
-            set(x, y - (((y - y1) * 2)), _strokeR, _strokeG, _strokeB); // third reflection
-            set(x - (((x - x1) * 2)), y - (((y - y1) * 2)), _strokeR, _strokeG, _strokeB); // fourth reflection
-          } else if (_fill) {
-            // fill
-            set(x, y, _fillR, _fillG, _fillB); // current point
-            set(x - (((x - x1) * 2)), y, _fillR, _fillG, _fillB); // second reflection
-            set(x, y - (((y - y1) * 2)), _fillR, _fillG, _fillB); // third reflection
-            set(x - (((x - x1) * 2)), y - (((y - y1) * 2)), _fillR, _fillG, _fillB); // fourth reflection
-          }
-      }
-  }
-}
-
-void ArduinoGraphics::arc(int x, int y, int radiusX, int radiusY, int start, int stop);
-{
-  if (!_stroke && !_fill) {
-    return;
-  }
-
-  int x1 = x;
-  int y1 = y;
-
-  for(int a = start; a <= stop; a++) {
-
-      int x2 = (int)(x1 + (radiusX * cos(a)));
-      int y2 = (int)(y1 + (radiusY * sin(a)));
-
-      if (_stroke) {
-        // stroke
-        set(x2, y2, _strokeR, _strokeG, _strokeB);
-      }
-
-      if (_fill) {
-          for (int r = 0; r < a; r++) {
-              set((int)(x1 + (radiusX * cos(r))), (int)(y1 + (radiusY * sin(r))), _fillR, _fillG, _fillB);
-          }
-      }
-  }
+  ellipse(x, y, ((radius*2)-1), ((radius*2)-1));
 }
 
 void ArduinoGraphics::text(const char* str, int x, int y)
