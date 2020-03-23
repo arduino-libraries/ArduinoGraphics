@@ -10,8 +10,8 @@ Font	KEYWORD1
 Image	KEYWORD1
 
 ##########################################
-# Methods and Functions 
-##########################################	
+# Methods and Functions
+##########################################
 
 begin	KEYWORD2
 end	KEYWORD2
@@ -28,6 +28,8 @@ fill	KEYWORD2
 noFill	KEYWORD2
 stroke	KEYWORD2
 noStroke	KEYWORD2
+setTextColor	KEYWORD2
+noTextColor	KEYWORD2
 
 line	KEYWORD2
 point	KEYWORD2

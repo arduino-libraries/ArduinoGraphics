@@ -56,6 +56,9 @@ public:
   void stroke(uint8_t r, uint8_t g, uint8_t b);
   void stroke(uint32_t color);
   void noStroke();
+  void setTextColor(uint8_t r, uint8_t g, uint8_t b);
+  void setTextColor(uint32_t color);
+  void noTextColor();
 
   //virtual void arc(int x, int y, int width, int height, int start, int stop);
   //virtual void ellipse(int x, int y, int width, int height);
@@ -90,6 +93,7 @@ public:
 
 protected:
   virtual void bitmap(const uint8_t* data, int x, int y, int width, int height);
+  virtual void text_bitmap(const uint8_t* data, int x, int y, int width, int height);
   virtual void imageRGB(const Image& img, int x, int y, int width, int height);
   virtual void imageRGB24(const Image& img, int x, int y, int width, int height);
   virtual void imageRGB16(const Image& img, int x, int y, int width, int height);
@@ -108,6 +112,7 @@ private:
   uint8_t _fillR, _fillG, _fillB;
   uint8_t _strokeR, _strokeG, _strokeB;
 
+  bool _text;
   String _textBuffer;
   uint8_t _textR, _textG, _textB;
   int _textX;
