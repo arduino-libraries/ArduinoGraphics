@@ -50,6 +50,7 @@ public:
   void background(uint8_t r, uint8_t g, uint8_t b);
   void background(uint32_t color);
   void clear();
+  void clear(int x, int y); //clear specific point
   void fill(uint8_t r, uint8_t g, uint8_t b);
   void fill(uint32_t color);
   void noFill();
