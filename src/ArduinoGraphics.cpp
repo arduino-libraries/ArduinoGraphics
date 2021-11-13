@@ -83,7 +83,7 @@ void ArduinoGraphics::clear()
 {
   for (int x = 0; x < _width; x++) {
     for (int y = 0; y < _height; y++) {
-      set(x, y, _backgroundR, _backgroundB, _backgroundG);
+      set(x, y, _backgroundR, _backgroundG, _backgroundB);
     }
   }
 }
