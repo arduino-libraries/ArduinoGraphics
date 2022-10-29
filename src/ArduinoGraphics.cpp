@@ -124,6 +124,24 @@ void ArduinoGraphics::noStroke()
   _stroke = false;
 }
 
+void ArduinoGraphics::setTextColor(uint8_t r, uint8_t g, uint8_t b)
+{
+  _text = true;
+  _textR = r;
+  _textG = g;
+  _textB = b;
+}
+
+void ArduinoGraphics::setTextColor(uint32_t color)
+{
+  setTextColor(COLOR_R(color), COLOR_G(color), COLOR_B(color));
+}
+
+void ArduinoGraphics::noTextColor()
+{
+  _text = false;
+}
+
 void ArduinoGraphics::line(int x1, int y1, int x2, int y2)
 {
   if (!_stroke) {
@@ -186,7 +204,7 @@ void ArduinoGraphics::rect(int x, int y, int width, int height)
 
 void ArduinoGraphics::text(const char* str, int x, int y)
 {
-  if (!_font || !_stroke) {
+  if (!_font || !_text) {
     return;
   }
 
@@ -207,7 +225,7 @@ void ArduinoGraphics::text(const char* str, int x, int y)
       }
 
       if (b) {
-        bitmap(b, x, y, _font->width, _font->height);
+        text_bitmap(b, x, y, _font->width, _font->height);
       }
 
       x += _font->width;
@@ -247,6 +265,30 @@ void ArduinoGraphics::bitmap(const uint8_t* data, int x, int y, int width, int h
     for (int i = 0; i < width; i++) {
       if (b & (1 << (7 - i))) {
         set(x + i, y + j, _strokeR, _strokeG, _strokeB);
+      } else {
+        set(x + i, y + j, _backgroundR, _backgroundG, _backgroundB);
+      }
+    }
+  }
+}
+
+void ArduinoGraphics::text_bitmap(const uint8_t* data, int x, int y, int width, int height)
+{
+  if (!_text) {
+    return;
+  }
+
+  if ((data == NULL) || ((x + width) < 0) || ((y + height) < 0) || (x > _width) || (y > height)) {
+    // offscreen
+    return;
+  }
+
+  for (int j = 0; j < height; j++) {
+    uint8_t b = data[j];
+
+    for (int i = 0; i < width; i++) {
+      if (b & (1 << (7 - i))) {
+        set(x + i, y + j, _textR, _textG, _textB);
       } else {
         set(x + i, y + j, _backgroundR, _backgroundG, _backgroundB);
       }
@@ -362,10 +404,7 @@ void ArduinoGraphics::beginText(int x, int y)
 void ArduinoGraphics::beginText(int x, int y, uint8_t r, uint8_t g, uint8_t b)
 {
   beginText(x, y);
-
-  _textR = r;
-  _textG = g;
-  _textB = b;  
+  setTextColor(r, g, b);
 }
 
 void ArduinoGraphics::beginText(int x, int y, uint32_t color)
@@ -375,15 +414,6 @@ void ArduinoGraphics::beginText(int x, int y, uint32_t color)
 
 void ArduinoGraphics::endText(int scrollDirection)
 {
-  // backup the stroke color and set the color to the text color
-  bool strokeOn = _stroke;
-  uint8_t strokeR = _strokeR;
-  uint8_t strokeG = _strokeG;
-  uint8_t strokeB = _strokeB;
-
-
-  stroke(_textR, _textG, _textB);
-
   if (scrollDirection == SCROLL_LEFT) {
     int scrollLength = _textBuffer.length() * textFontWidth() + _textX;
 
@@ -429,14 +459,7 @@ void ArduinoGraphics::endText(int scrollDirection)
     text(_textBuffer, _textX, _textY);
     endDraw();
   }
-
-  // restore the stroke color
-  if (strokeOn) {
-    stroke(strokeR, strokeG, strokeB);
-  } else {
-    noStroke();
-  }
-
+  
   // clear the buffer
   _textBuffer = "";
 }
@@ -482,7 +505,7 @@ void ArduinoGraphics::lineHigh(int x1, int y1, int x2, int y2)
     xi = -1;
     dx = -dx;
   }
-  
+
   int D = 2 * dx - dy;
   int x = x1;
 
