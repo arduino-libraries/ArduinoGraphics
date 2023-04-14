@@ -539,6 +539,83 @@ YourScreen.endDraw();
 ```
 
 
+### `circle()`
+
+#### Description
+
+
+Stroke and fill a circle, uses the stroke color set in stroke() and the fill color set in fill().
+
+#### Syntax
+
+```
+YourScreen.circle(x, y, diameter)
+
+```
+
+
+#### Parameters
+
+
+- x: x center position of the circle
+- y: y center position of the circle
+- diameter: diameter of the circle
+
+#### Returns
+
+Nothing
+
+#### Example
+
+```
+YourScreen.beginDraw();
+YourScreen.clear();
+YourScreen.noStroke();
+YourScreen.fill(255, 255, 0);
+YourScreen.circle(YourScreen.width()/2, YourScreen.height()/2, YourScreen.height());
+YourScreen.endDraw();
+```
+
+
+### `ellipse()`
+
+#### Description
+
+
+Stroke and fill an ellipse, uses the stroke color set in stroke() and the fill color set in fill().
+
+#### Syntax
+
+```
+YourScreen.ellipse(x, y, width, height)
+
+```
+
+
+#### Parameters
+
+
+- x: x center position of the ellipse
+- y: y center position of the ellipse
+- width: width of the ellipse
+- height: height of the ellipse
+
+#### Returns
+
+Nothing
+
+#### Example
+
+```
+YourScreen.beginDraw();
+YourScreen.clear();
+YourScreen.noStroke();
+YourScreen.fill(255, 255, 0);
+YourScreen.ellipse(YourScreen.width()/2, YourScreen.height()/2, YourScreen.width(), YourScreen.height());
+YourScreen.endDraw();
+```
+
+
 ### `text()`
 
 #### Description

@@ -59,6 +59,12 @@ int ArduinoGraphics::height()
   return _height;
 }
 
+uint32_t ArduinoGraphics::background() 
+{
+  uint32_t bg = (uint32_t)((uint32_t)(_backgroundR << 16) | (uint32_t)(_backgroundG << 8) | (uint32_t)(_backgroundB << 0));
+  return bg;
+}
+
 void ArduinoGraphics::beginDraw()
 {
 }
@@ -122,6 +128,47 @@ void ArduinoGraphics::stroke(uint32_t color)
 void ArduinoGraphics::noStroke()
 {
   _stroke = false;
+}
+
+void ArduinoGraphics::circle(int x, int y, int diameter)
+{
+  ellipse(x, y, diameter, diameter);
+}
+
+void ArduinoGraphics::ellipse(int x, int y, int width, int height) 
+{
+  if (!_stroke && !_fill) {
+    return;
+  }
+
+  int32_t a = width / 2;
+  int32_t b = height / 2;
+  int64_t a2 = a * a;
+  int64_t b2 = b * b;
+  int64_t i, j;
+  
+  if (_fill) {
+      for (j = -b; j <= b; j++) {
+          for (i = -a; i <= a; i++) {
+              if (i*i*b2 + j*j*a2 <= a2*b2) {
+                  set(x + i, y + j, _fillR, _fillG, _fillB);
+              }
+          }
+      }
+  }
+  if (_stroke) {
+      int x_val, y_val;
+      for (i = -a; i <= a; i++) {
+          y_val = b * sqrt(1 - (double)i*i / a2);
+          set(x + i, y + y_val, _strokeR, _strokeG, _strokeB);
+          set(x + i, y - y_val, _strokeR, _strokeG, _strokeB);
+      }
+      for (j = -b; j <= b; j++) {
+          x_val = a * sqrt(1 - (double)j*j / b2);
+          set(x + x_val, y + j, _strokeR, _strokeG, _strokeB);
+          set(x - x_val, y + j, _strokeR, _strokeG, _strokeB);
+      }
+  }
 }
 
 void ArduinoGraphics::line(int x1, int y1, int x2, int y2)
