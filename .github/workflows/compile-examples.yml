@@ -71,4 +71,4 @@ jobs:
         with:
           if-no-files-found: error
           name: sketches-report-${{ matrix.board.artifact-name-suffix }}
-          name: ${{ env.SKETCHES_REPORTS_PATH }}
+          path: ${{ env.SKETCHES_REPORTS_PATH }}
