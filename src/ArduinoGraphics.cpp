@@ -238,7 +238,7 @@ void ArduinoGraphics::text(const char* str, int x, int y)
   }
 
   while (*str) {
-    int c = *str++;
+    uint8_t const c = (uint8_t)*str++;
 
     if (c == '\n') {
       y += _font->height;
