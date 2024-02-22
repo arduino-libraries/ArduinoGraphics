@@ -60,22 +60,27 @@ with open(input) as f:
 
 out = open(output, "w")
 
-print >> out, "#include \"Font.h\""
-print >> out
-print >> out, "const struct Font %s = {" % ( name )
-print >> out, "  %d," % ( fontWidth )
-print >> out, "  %d," % ( fontHeight )
-print >> out, "  (const uint8_t*[]){"
+out.write("#include \"Font.h\"\n")
+out.write("\n")
+out.write("const struct Font %s = {" % ( name ))
+out.write("\n")
+out.write("  %d," % ( fontWidth ))
+out.write("\n")
+out.write("  %d," % ( fontHeight ))
+out.write("\n")
+out.write("  (const uint8_t*[]){\n")
 for c in range (0, 255):
 	if None == fontCharacters[c]:
-		print >> out, "    NULL,"
+		out.write("    NULL,\n")
 	else:
-		print >> out, "    // %s" % (fontCharacterNames[c])
-		print >> out, "    (const uint8_t[]){"
+		out.write("    // %s" % (fontCharacterNames[c]))
+		out.write("\n")
+		out.write("    (const uint8_t[]){\n")
 		for i in range(0, fontHeight):
-			print >> out, "      0b%s," % ('{0:08b}'.format(fontCharacters[c][i]))
-		print >> out, "    },"
-print >> out, "  }"
-print >> out, "};"
+			out.write("      0b%s," % ('{0:08b}'.format(fontCharacters[c][i])))
+			out.write("\n")
+		out.write("    },\n")
+out.write("  }\n")
+out.write("};\n")
 
 out.close()
