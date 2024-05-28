@@ -131,9 +131,11 @@ Nothing
 
 #### Example
 
+```
 YourScreen.beginDraw();
 YourScreen.set(0, 0, 255, 0, 0);
 YourScreen.endDraw();
+```
 
 ### `endDraw()`
 
