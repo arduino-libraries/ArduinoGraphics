@@ -202,7 +202,7 @@ YourScreen.endDraw();
 
 #### Description
 
-Set clear the screen contents, uses the background colour set in background().
+Clear the screen contents, uses the background colour set in background().
 
 #### Syntax
 
@@ -561,7 +561,7 @@ YourScreen.endDraw();
 
 #### Description
 
-Sets the font uses for text. The library current has the Font_4x6 and Font_5x7 built in.
+Sets the font used for text. The library current has the Font_4x6 and Font_5x7 built in.
 
 #### Syntax
 

@@ -32,6 +32,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 == How-to generate bitmaps from the fonts ==
 [source,bash]
 ----
-cd extra
+cd extras
 ./generate_font.py 5x7.bdf Font_5x7.c Font_5x7
 ----
