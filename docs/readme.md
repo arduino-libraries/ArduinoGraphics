@@ -1,6 +1,6 @@
 # Arduino Graphics Library
 
-This is a library that allows you to draw and write on screens with graphical primitives; it requires a specific hardware interfacce library to drive the screen you are using, therefore every screen type should have its own hardware specific library.
+This is a library that allows you to draw and write on screens with graphical primitives; it requires a specific hardware interface library to drive the screen you are using, therefore every screen type should have its own hardware specific library.
 
 To use this library
 

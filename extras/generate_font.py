@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# This file is part of the MKRRGBMatrix library.
+# This file is part of the ArduinoGraphics library.
 # Copyright (c) 2018 Arduino SA. All rights reserved.
 #
 # This library is free software; you can redistribute it and/or
