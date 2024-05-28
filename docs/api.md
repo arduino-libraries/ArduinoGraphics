@@ -6,7 +6,6 @@
 
 #### Description
 
-
 Initializes the graphics device.
 
 #### Syntax
@@ -14,7 +13,6 @@ Initializes the graphics device.
 ```
 YourScreen.begin()
 ```
-
 
 #### Parameters
 
@@ -33,8 +31,6 @@ if (!YourScreen.begin() {
 }
 ```
 
-
-
 ### `end()`
 
 #### Description
@@ -45,15 +41,11 @@ Stops the graphics device.
 
 ```
 YourScreen.end()
-
 ```
-
 
 #### Parameters
 
-
 None
-
 
 #### Returns
 
@@ -65,12 +57,9 @@ Nothing
 YourScreen.end();
 ```
 
-
-
 ### `width()`
 
 #### Description
-
 
 Returns the pixel width of the graphics device.
 
@@ -78,12 +67,9 @@ Returns the pixel width of the graphics device.
 
 ```
 YourScreen.width()
-
 ```
 
-
 #### Parameters
-
 
 None
 
@@ -97,11 +83,9 @@ Returns the pixel width of the graphics device.
 int w = YourScreen.width();
 ```
 
-
 ### `height()`
 
 #### Description
-
 
 Returns the pixel height of the graphics device.
 
@@ -109,12 +93,9 @@ Returns the pixel height of the graphics device.
 
 ```
 YourScreen.height()
-
 ```
 
-
 #### Parameters
-
 
 None
 
@@ -128,11 +109,9 @@ Returns the pixel height of the graphics device.
 int h = YourScreen.height();
 ```
 
-
 ### `beginDraw()`
 
 #### Description
-
 
 Begins a drawing operation.
 
@@ -140,15 +119,11 @@ Begins a drawing operation.
 
 ```
 YourScreen.beginDraw()
-
 ```
-
 
 #### Parameters
 
-
 None
-
 
 #### Returns
 
@@ -156,17 +131,13 @@ Nothing
 
 #### Example
 
-
 YourScreen.beginDraw();
 YourScreen.set(0, 0, 255, 0, 0);
 YourScreen.endDraw();
 
-
-
 ### `endDraw()`
 
 #### Description
-
 
 Ends a drawing operation, any drawing operations after beginDraw() is called will be displayed to the screen.
 
@@ -174,15 +145,11 @@ Ends a drawing operation, any drawing operations after beginDraw() is called wil
 
 ```
 YourScreen.endDraw()
-
 ```
-
 
 #### Parameters
 
-
 None
-
 
 #### Returns
 
@@ -196,11 +163,9 @@ YourScreen.set(0, 0, 255, 0, 0);
 YourScreen.endDraw();
 ```
 
-
 ### `background()`
 
 #### Description
-
 
 Set the background color of drawing operations. Used when calling clear() or drawing text.
 
@@ -209,12 +174,9 @@ Set the background color of drawing operations. Used when calling clear() or dra
 ```
 YourScreen.background(r, g, b)
 YourScreen.background(color)
-
 ```
 
-
 #### Parameters
-
 
 - r: red color value (0 - 255)
 - g: green color value (0 - 255)
@@ -234,11 +196,9 @@ YourScreen.clear();
 YourScreen.endDraw();
 ```
 
-
 ### `clear()`
 
 #### Description
-
 
 Set clear the screen contents, uses the background colour set in background().
 
@@ -246,15 +206,11 @@ Set clear the screen contents, uses the background colour set in background().
 
 ```
 YourScreen.clear()
-
 ```
-
 
 #### Parameters
 
-
 None
-
 
 #### Returns
 
@@ -269,12 +225,9 @@ YourScreen.clear();
 YourScreen.endDraw();
 ```
 
-
-
 ### `fill()`
 
 #### Description
-
 
 Set the fill color of drawing operations.
 
@@ -283,12 +236,9 @@ Set the fill color of drawing operations.
 ```
 YourScreen.fill(r, g, b)
 YourScreen.fill(color)
-
 ```
 
-
 #### Parameters
-
 
 - r: red color value (0 - 255)
 - g: green color value (0 - 255)
@@ -310,11 +260,9 @@ YourScreen.rect(0, 0, YourScreen.width(), YourScreen.height());
 YourScreen.endDraw();
 ```
 
-
 ### `noFill()`
 
 #### Description
-
 
 Clears the fill color of drawing operations.
 
@@ -322,15 +270,11 @@ Clears the fill color of drawing operations.
 
 ```
 YourScreen.noFill()
-
 ```
-
 
 #### Parameters
 
-
 None
-
 
 #### Returns
 
@@ -347,11 +291,9 @@ YourScreen.rect(0, 0, YourScreen.width(), YourScreen.height());
 YourScreen.endDraw();
 ```
 
-
 ### `stroke()`
 
 #### Description
-
 
 Set the stroke color of drawing operations.
 
@@ -360,12 +302,9 @@ Set the stroke color of drawing operations.
 ```
 YourScreen.stroke(r, g, b)
 YourScreen.stroke(color)
-
 ```
 
-
 #### Parameters
-
 
 - r: red color value (0 - 255)
 - g: green color value (0 - 255)
@@ -387,12 +326,9 @@ YourScreen.rect(0, 0, YourScreen.width(), YourScreen.height());
 YourScreen.endDraw();
 ```
 
-
-
 ### `noStroke()`
 
 #### Description
-
 
 Clears the stroke color of drawing operations.
 
@@ -400,15 +336,11 @@ Clears the stroke color of drawing operations.
 
 ```
 YourScreen.noStroke()
-
 ```
-
 
 #### Parameters
 
-
 None
-
 
 #### Returns
 
@@ -425,11 +357,9 @@ YourScreen.rect(0, 0, YourScreen.width(), YourScreen.height());
 YourScreen.endDraw();
 ```
 
-
 ### `line()`
 
 #### Description
-
 
 Stroke a line, uses the stroke color set in stroke().
 
@@ -437,12 +367,9 @@ Stroke a line, uses the stroke color set in stroke().
 
 ```
 YourScreen.line(x1, y1, x2, y2)
-
 ```
 
-
 #### Parameters
-
 
 - x1: x position of the starting point of the line
 - y1: y position of the starting point of the line
@@ -463,11 +390,9 @@ YourScreen.line(0, 0, YourScreen.width() - 1, YourScreen.height() - 1);
 YourScreen.endDraw();
 ```
 
-
 ### `point()`
 
 #### Description
-
 
 Stroke a point, uses the stroke color set in stroke().
 
@@ -475,12 +400,9 @@ Stroke a point, uses the stroke color set in stroke().
 
 ```
 YourScreen.point(x, y)
-
 ```
 
-
 #### Parameters
-
 
 x: x position of the point
 y: y position of the point
@@ -499,11 +421,9 @@ YourScreen.point(1, 1);
 YourScreen.endDraw();
 ```
 
-
 ### `rect()`
 
 #### Description
-
 
 Stroke and fill a rectangle, uses the stroke color set in stroke() and the fill color set in fill().
 
@@ -511,12 +431,9 @@ Stroke and fill a rectangle, uses the stroke color set in stroke() and the fill 
 
 ```
 YourScreen.rect(x, y, width, height)
-
 ```
 
-
 #### Parameters
-
 
 - x: x position of the rectangle
 - y: y position of the rectangle
@@ -538,11 +455,9 @@ YourScreen.rect(0, 0, YourScreen.width(), YourScreen.height());
 YourScreen.endDraw();
 ```
 
-
 ### `circle()`
 
 #### Description
-
 
 Stroke and fill a circle, uses the stroke color set in stroke() and the fill color set in fill().
 
@@ -550,12 +465,9 @@ Stroke and fill a circle, uses the stroke color set in stroke() and the fill col
 
 ```
 YourScreen.circle(x, y, diameter)
-
 ```
 
-
 #### Parameters
-
 
 - x: x center position of the circle
 - y: y center position of the circle
@@ -576,11 +488,9 @@ YourScreen.circle(YourScreen.width()/2, YourScreen.height()/2, YourScreen.height
 YourScreen.endDraw();
 ```
 
-
 ### `ellipse()`
 
 #### Description
-
 
 Stroke and fill an ellipse, uses the stroke color set in stroke() and the fill color set in fill().
 
@@ -588,12 +498,9 @@ Stroke and fill an ellipse, uses the stroke color set in stroke() and the fill c
 
 ```
 YourScreen.ellipse(x, y, width, height)
-
 ```
 
-
 #### Parameters
-
 
 - x: x center position of the ellipse
 - y: y center position of the ellipse
@@ -615,11 +522,9 @@ YourScreen.ellipse(YourScreen.width()/2, YourScreen.height()/2, YourScreen.width
 YourScreen.endDraw();
 ```
 
-
 ### `text()`
 
 #### Description
-
 
 Draw some text, uses the stroke color set in stroke() and the background color set in background().
 
@@ -628,12 +533,9 @@ Draw some text, uses the stroke color set in stroke() and the background color s
 ```
 YourScreen.text(string)
 YourScreen.text(string, x, y)
-
 ```
 
-
 #### Parameters
-
 
 - string: string to draw
 - x: x position for the start of the text
@@ -653,11 +555,9 @@ YourScreen.text("abc", 0, 1);
 YourScreen.endDraw();
 ```
 
-
 ### `textFont()`
 
 #### Description
-
 
 Sets the font uses for text. The library current has the Font_4x6 and Font_5x7 built in.
 
@@ -665,15 +565,11 @@ Sets the font uses for text. The library current has the Font_4x6 and Font_5x7 b
 
 ```
 YourScreen.textFont(font)
-
 ```
-
 
 #### Parameters
 
-
 font: font to set
-
 
 #### Returns
 
@@ -690,11 +586,9 @@ YourScreen.text("abc", 0, 1);
 YourScreen.endDraw();
 ```
 
-
 ### `textFontWidth()`
 
 #### Description
-
 
 Returns the width, in pixels, of the current font.
 
@@ -705,12 +599,9 @@ YourScreen.textFontWidth()
 
 ```
 
-
 #### Parameters
 
-
 None
-
 
 #### Returns
 
@@ -722,11 +613,9 @@ Nothing
 int w = YourScreen.textFontWidth();
 ```
 
-
 ### `textFontHeight()`
 
 #### Description
-
 
 Returns the height, in pixels, of the current font.
 
@@ -734,15 +623,11 @@ Returns the height, in pixels, of the current font.
 
 ```
 YourScreen.textFontHeight()
-
 ```
-
 
 #### Parameters
 
-
 None
-
 
 #### Returns
 
@@ -754,11 +639,9 @@ Nothing
 int h = YourScreen.textFontHeight();
 ```
 
-
 ### `set()`
 
 #### Description
-
 
 Set a pixel’s color value.
 
@@ -767,12 +650,9 @@ Set a pixel’s color value.
 ```
 YourScreen.set(x, y, r, g, b)
 YourScreen.set(x, y, color)
-
 ```
 
-
 #### Parameters
-
 
 x: x position of the pixel
 y: y position of the pixel
@@ -793,11 +673,9 @@ YourScreen.point(1, 1, 0, 255, 0);
 YourScreen.endDraw();
 ```
 
-
 ### `beginText()`
 
 #### Description
-
 
 Start the process of displaying and optionally scrolling text. The Print interface can be used to set the text.
 
@@ -807,12 +685,9 @@ Start the process of displaying and optionally scrolling text. The Print interfa
 YourScreen.beginText()
 YourScreen.beginText(x, y, r, g, b)
 YourScreen.beginText(x, y, color)
-
 ```
 
-
 #### Parameters
-
 
 x: x position of the text
 y: y position of the text
@@ -833,11 +708,9 @@ YourScreen.print("Hi");
 YourScreen.endText();
 ```
 
-
 ### `endText()`
 
 #### Description
-
 
 End the process of displaying and optionally scrolling text.
 
@@ -846,12 +719,9 @@ End the process of displaying and optionally scrolling text.
 ```
 YourScreen.endText()
 YourScreen.endText(scrollDirection)
-
 ```
 
-
 #### Parameters
-
 
 scrollDirection: (optional) the direction to scroll, defaults to NO_SCROLL if not provided. Valid options are NO_SCROLL, SCROLL_LEFT, SCROLL_RIGHT, SCROLL_UP, SCROLL_DOWN
 
@@ -867,11 +737,9 @@ YourScreen.print("Hi");
 YourScreen.endText();
 ```
 
-
 ### `textScrollSpeed()`
 
 #### Description
-
 
 Sets the text scrolling speed, the speed controls the delay in milliseconds between scrolling each pixel.
 
@@ -879,15 +747,11 @@ Sets the text scrolling speed, the speed controls the delay in milliseconds betw
 
 ```
 YourScreen.textScrollSpeed(speed)
-
 ```
-
 
 #### Parameters
 
-
 speed: scroll speed
-
 
 #### Returns
 
@@ -901,4 +765,3 @@ YourScreen.textScrollSpeed(500);
 YourScreen.print("Hello There!");
 YourScreen.endText(true);
 ```
-
