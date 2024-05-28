@@ -25,8 +25,8 @@ None
 #### Example
 
 ```
-if (!YourScreen.begin() {
-  Serial.println(“Failed to initialize the display!”);
+if (!YourScreen.begin()) {
+  Serial.println("Failed to initialize the display!");
   while (1);
 }
 ```
