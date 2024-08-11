@@ -14,8 +14,9 @@
 
 #include <ArduinoGraphics.h>
 
-const byte canvasWidth = 61;
-const byte canvasHeight = 27;
+const byte fontSize = 3;
+const byte canvasWidth = fontSize * (5 * 7) + 26;
+const byte canvasHeight = fontSize * 7 + 20;
 
 class ASCIIDrawClass : public ArduinoGraphics {
   public:
@@ -85,6 +86,7 @@ void setup() {
   ASCIIDraw.stroke('@', 0, 0);
   const char text[] = "ARDUINO";
   ASCIIDraw.textFont(Font_5x7);
+  ASCIIDraw.textSize(fontSize);
   const byte textWidth = strlen(text) * ASCIIDraw.textFontWidth();
   const byte textHeight = ASCIIDraw.textFontHeight();
   const byte textX = (canvasWidth - textWidth) / 2;
