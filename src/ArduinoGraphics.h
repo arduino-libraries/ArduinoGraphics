@@ -70,6 +70,8 @@ public:
   virtual void text(const char* str, int x = 0, int y = 0);
   virtual void text(const String& str, int x = 0, int y = 0) { text(str.c_str(), x, y); }
   virtual void textFont(const Font& which);
+  virtual void textSize(uint8_t s) {textSize(s, s);}
+  virtual void textSize(uint8_t sx, uint8_t sy);
 
   virtual int textFontWidth() const;
   virtual int textFontHeight() const;
@@ -91,7 +93,8 @@ public:
   virtual void textScrollSpeed(unsigned long speed = 150);
 
 protected:
-  virtual void bitmap(const uint8_t* data, int x, int y, int width, int height);
+  virtual void bitmap(const uint8_t* data, int x, int y, int w, int h, uint8_t scale_x = 1, 
+                      uint8_t scale_y = 1);
   virtual void imageRGB(const Image& img, int x, int y, int width, int height);
   virtual void imageRGB24(const Image& img, int x, int y, int width, int height);
   virtual void imageRGB16(const Image& img, int x, int y, int width, int height);
@@ -114,6 +117,8 @@ private:
   uint8_t _textR, _textG, _textB;
   int _textX;
   int _textY;
+  uint8_t _textSizeX;
+  uint8_t _textSizeY;
   unsigned long _textScrollSpeed;
 };
 

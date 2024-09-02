@@ -641,6 +641,41 @@ Nothing
 int h = YourScreen.textFontHeight();
 ```
 
+### `textSize()`
+
+#### Description
+
+Set a text scale factor
+
+#### Syntax
+
+```
+YourScreen.textSize(scale)
+YourScreen.textSize(scaleX, scaleY)
+```
+
+#### Parameters
+
+scale: scale factor used for both x and y
+scaleX: x scale factor
+scaleY: y scale factor
+
+#### Returns
+
+Nothing
+
+#### Example
+
+```
+YourScreen.beginDraw();
+YourScreen.clear();
+YourScreen.stroke(255, 255, 255);
+YourScreen.textFont(Font_5x7);
+YourScreen.textSize(5);
+YourScreen.text("abc", 0, 1);
+YourScreen.endDraw();
+```
+
 ### `set()`
 
 #### Description
