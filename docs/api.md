@@ -202,17 +202,19 @@ YourScreen.endDraw();
 
 #### Description
 
-Clear the screen contents, uses the background colour set in background().
+Clear the screen contents or a specific pixel, uses the background colour set in background().
 
 #### Syntax
 
 ```
 YourScreen.clear()
+YourScreen.clear(x, y)
 ```
 
 #### Parameters
 
-None
+- x: x position of the pixel to clear
+- y: y position of the pixel to clear
 
 #### Returns
 

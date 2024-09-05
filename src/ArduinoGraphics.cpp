@@ -96,6 +96,11 @@ void ArduinoGraphics::clear()
   }
 }
 
+void ArduinoGraphics::clear(int x, int y)
+{
+  set(x, y, _backgroundR, _backgroundB, _backgroundG);
+}
+
 void ArduinoGraphics::fill(uint8_t r, uint8_t g, uint8_t b)
 {
   _fill = true;
