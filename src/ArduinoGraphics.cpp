@@ -458,7 +458,7 @@ void ArduinoGraphics::endText(int scrollDirection)
       beginDraw();
       int const text_x = _textX - i;
       text(_textBuffer, text_x, _textY);
-      bitmap(_font->data[0x20], text_x - 1, _textY, 1, _font->height, _textSizeX, _textSizeY);
+      bitmap(_font->data[0x20], text_x + _textBuffer.length() * _font->width, _textY, 1, _font->height, _textSizeX, _textSizeY);
       endDraw();
 
       delay(_textScrollSpeed);
@@ -482,7 +482,7 @@ void ArduinoGraphics::endText(int scrollDirection)
       beginDraw();
       int const text_y = _textY - i;
       text(_textBuffer, _textX, text_y);
-      bitmap(_font->data[0x20], _textX, text_y - 1, _font->width, 1, _textSizeX, _textSizeY);
+      bitmap(_font->data[0x20], _textX, text_y + _font->height, _font->width, 1, _textSizeX, _textSizeY);
       endDraw();
 
       delay(_textScrollSpeed);
