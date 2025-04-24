@@ -452,7 +452,7 @@ void ArduinoGraphics::endText(int scrollDirection)
   stroke(_textR, _textG, _textB);
 
   if (scrollDirection == SCROLL_LEFT) {
-    int scrollLength = _textBuffer.length() * textFontWidth() + _textX;
+    int scrollLength = _textBuffer.length() * textFontWidth() + _textX + 1;
 
     for (int i = 0; i < scrollLength; i++) {
       beginDraw();
@@ -476,7 +476,7 @@ void ArduinoGraphics::endText(int scrollDirection)
       delay(_textScrollSpeed);
     }
   } else if (scrollDirection == SCROLL_UP) {
-    int scrollLength = textFontHeight() + _textY;
+    int scrollLength = textFontHeight() + _textY + 1;
 
     for (int i = 0; i < scrollLength; i++) {
       beginDraw();
