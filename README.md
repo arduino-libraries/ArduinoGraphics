@@ -7,4 +7,3 @@
 Core graphics library for Arduino. Based on the Processing API.
 
 📖 For more information about this library please read the documentation [here](./docs/) or visit us at [https://www.arduino.cc/en/Reference/ArduinoGraphics](https://www.arduino.cc/en/Reference/ArduinoGraphics)
-do
