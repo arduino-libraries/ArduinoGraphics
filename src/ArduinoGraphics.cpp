@@ -445,9 +445,9 @@ void ArduinoGraphics::endText(int scrollDirection)
       text(_textBuffer, text_x, _textY);
 
       // clear previous position
-      const int clearX = text_x + _textBuffer.length() * _font->width;
+      const int clearX = text_x + _textBuffer.length() * textFontWidth();
       stroke(_backgroundR, _backgroundG, _backgroundB);
-      line(clearX, _textY, clearX, _textY + _font->height - 1);
+      line(clearX, _textY, clearX, _textY + textFontHeight() - 1);
 
       endDraw();
 
@@ -466,7 +466,7 @@ void ArduinoGraphics::endText(int scrollDirection)
       // clear previous position
       const int clearX = text_x - 1;
       stroke(_backgroundR, _backgroundG, _backgroundB);
-      line(clearX, _textY, clearX, _textY + _font->height - 1);
+      line(clearX, _textY, clearX, _textY + textFontHeight() - 1);
 
       bitmap(_font->data[0x20], text_x - 1, _textY, 1, _font->height, _textSizeX, _textSizeY);
 
@@ -485,9 +485,9 @@ void ArduinoGraphics::endText(int scrollDirection)
       text(_textBuffer, _textX, text_y);
 
       // clear previous position
-      const int clearY = text_y + _font->height;
+      const int clearY = text_y + textFontHeight();
       stroke(_backgroundR, _backgroundG, _backgroundB);
-      line(_textX, clearY, _textX + (_font->width * _textBuffer.length()) - 1, clearY);
+      line(_textX, clearY, _textX + (textFontWidth() * _textBuffer.length()) - 1, clearY);
 
       endDraw();
 
@@ -506,7 +506,7 @@ void ArduinoGraphics::endText(int scrollDirection)
       // clear previous position
       const int clearY = text_y - 1;
       stroke(_backgroundR, _backgroundG, _backgroundB);
-      line(_textX, clearY, _textX + (_font->width * _textBuffer.length()) - 1, clearY);
+      line(_textX, clearY, _textX + (textFontWidth() * _textBuffer.length()) - 1, clearY);
 
       bitmap(_font->data[0x20], _textX, text_y - 1, _font->width, 1, _textSizeX, _textSizeY);
       endDraw();
