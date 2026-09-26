@@ -10,7 +10,7 @@ To use this library
 
 To let you easily understand the usage of the graphics primitives, we are using a dummy screen object named YourScreen that should be substituted with the real one, Eg. MATRIX, OLED, TFT and so on. Refer to the hardware interfacing library of your screen to get more details.
 
-The style and syntax of this library is inspired by [Processing 3](https://processing.org/) and we believe that learning Processing is very helpful to develop complex applications that combine the versatility of Arduino driven hardware with the power of a pc based graphical interface.
+The style and syntax of this library is inspired by [Processing](https://processing.org/) and we believe that learning Processing is very helpful to develop complex applications that combine the versatility of Arduino driven hardware with the power of a pc based graphical interface.
 
 ## How-to generate bitmaps from the fonts
 
